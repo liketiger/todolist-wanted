@@ -1,15 +1,15 @@
 import styled from "@emotion/styled";
 import React from "react";
+import { useSelector } from "react-redux";
 import { Item } from "../Item/Item";
 
 export const List = () => {
+  const todoList = useSelector((state) => state.todo.todoList);
   return (
     <ListUl>
-      {Array(10)
-        .fill(0)
-        .map((item, index) => (
-          <Item key={index} item={item} />
-        ))}
+      {todoList.map((item) => (
+        <Item key={item.id} item={item} />
+      ))}
     </ListUl>
   );
 };

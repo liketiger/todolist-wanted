@@ -1,11 +1,19 @@
 import styled from "@emotion/styled";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { deleteTodo } from "../../store/todoSlice";
 
 export const Item = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const onBtnClick = () => {
+    dispatch(deleteTodo(item.id));
+  };
+
   return (
     <Wrapper>
-      <ListItem>{item}</ListItem>
-      <Button>삭제</Button>
+      <ListItem>{item.content}</ListItem>
+      <Button onClick={onBtnClick}>삭제</Button>
     </Wrapper>
   );
 };
